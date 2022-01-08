@@ -35,6 +35,18 @@ public class Pedido {
     @OneToMany(mappedBy = "pedido",cascade = { CascadeType.ALL }, orphanRemoval = true)
     private List<Images> images;
 
+    @ManyToOne
+    @JoinColumn(name = "user", foreignKey = @ForeignKey(name = "FK_PEDIDO_USER"))
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public List<Images> getImages() {
         return images;
     }
