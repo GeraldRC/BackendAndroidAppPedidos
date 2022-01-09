@@ -41,4 +41,10 @@ public class UserServiceImpl implements IUserService {
         repo.deleteById(id);
         return true;
     }
+
+    @Override
+    public User getUserLogin(String user, String pass) {
+        Optional<User> op = repo.getUserLogin(user,pass);
+        return op.orElseGet(User::new);
+    }
 }
