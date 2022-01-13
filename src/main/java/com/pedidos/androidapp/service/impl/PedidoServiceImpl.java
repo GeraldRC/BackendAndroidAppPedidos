@@ -41,4 +41,10 @@ public class PedidoServiceImpl implements IPedidoService {
         repo.deleteById(id);
         return true;
     }
+
+    @Override
+    public Pedido getPedidoByNumPed(Integer numped) {
+        Optional<Pedido> op = repo.findByNumPed(numped);
+        return op.orElseGet(Pedido::new);
+    }
 }

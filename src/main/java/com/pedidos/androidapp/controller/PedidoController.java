@@ -26,11 +26,12 @@ public class PedidoController {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Pedido> getById(@PathVariable("id") Long id){
-        Pedido pedido = service.findById(id);
+
+    @GetMapping("/{numped}")
+    public ResponseEntity<Pedido> getByNumPedido(@PathVariable("numped") Integer numped){
+        Pedido pedido = service.getPedidoByNumPed(numped);
         if (pedido.getId() == null){
-            throw new ModelNotFoundException("ID NO ENCONTRADO " + id);
+            throw  new ModelNotFoundException("Pedido: "+numped+ "No encontrado");
         }
         return new ResponseEntity<>(pedido,HttpStatus.OK);
     }
